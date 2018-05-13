@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">MD INFORMATICA</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="txt_ordem_serviço">Ordem e Serviço</string>
+    <string name="txt_cliente">Cliente</string>
+    <string name="txt_prestacao">Prestação</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_confirmar">Confirmar</string>
+    <string name="btn_adicionar">Adicionar</string>
+    <string name="txt_nome">Nome</string>
+    <string name="txt_CPF">CPF</string>
+    <string name="txt_DataDeNascimento">Data de Nascimento</string>
+    <string name="txt_telefone">Telefone</string>
+    <string name="txt_cidade">Cidade</string>
+    <string name="txt_bairro">Bairro</string>
+    <string name="txt_rua">Rua</string>
+    <string name="txt_numero">N°</string>
+    <string name="txt_observacoes">Observações</string>
+
+    <string name="txt_escolher_cliente">Escolher Cliente</string>
+    <string name="txt_numero_os">Numero da OS</string>
+    <string name="txt_modelo_produto">Modelo</string>
+    <string name="txt_marca_produto">Marca</string>
+    <string name="txt_data_entrada">Data de Entrada</string>
+    <string name="txt_data_saida">Previsão de Saída</string>
+    <string name="txt_IMEI">IMEI</string>
+    <string name="txt_acessorios">Acessórios</string>
+    <string name="txt_detalhes">Detalhes e Observações</string>
+    <string name="txt_defeito">Defeito ou  Reclamação</string>
+    <string name="txt_valor_previo">Valor Prévio</string>
+    <string name="txt_valor_final">Valor Final</string>
+    <string name="txt_numero_OS">Numero da Ordem de Serviço</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

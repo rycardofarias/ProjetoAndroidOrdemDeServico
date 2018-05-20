@@ -86,27 +86,28 @@ public class CadastrarOrdemServicoActivity extends AppCompatActivity {
                 String osValorPrevio = valorPrevio.getText().toString();
                 String osTecnico = tecnico.getText().toString();
 
+                OrdemServico ordemServico = new OrdemServico();
+
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                Date data = new Date();
+                ordemServico.setData_entrada(data);
+                cliente.setId(id);
+                ordemServico.setCliente(cliente);
+
+                ordemServico.setNumero_ordem_servico(osNumero);
+                ordemServico.setModelo(osModelo);
+                ordemServico.setMarca(osMarca);
+                ordemServico.setIMEI(Integer.valueOf(osImei));
+                ordemServico.setAcessorios(osAcessorios);
+                ordemServico.setDetalhes(osDetalhes);
+                ordemServico.setDefeito_reclamacao(osDefeito);
+                ordemServico.setValor_previo(Double.valueOf(osValorPrevio));
+                ordemServico.setTecnico_responsavel(osTecnico);
+                ordemServico.setStatus_celular("Aberta");
 
                 validarCampos();
                 if (validacao == true) {
-                    OrdemServico ordemServico = new OrdemServico();
 
-                    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                    Date data = new Date();
-                    ordemServico.setData_entrada(data);
-                    cliente.setId(id);
-                    ordemServico.setCliente(cliente);
-
-                    ordemServico.setNumero_ordem_servico(osNumero);
-                    ordemServico.setModelo(osModelo);
-                    ordemServico.setMarca(osMarca);
-                    ordemServico.setIMEI(Integer.valueOf(osImei));
-                    ordemServico.setAcessorios(osAcessorios);
-                    ordemServico.setDetalhes(osDetalhes);
-                    ordemServico.setDefeito_reclamacao(osDefeito);
-                    ordemServico.setValor_previo(Double.valueOf(osValorPrevio));
-                    ordemServico.setTecnico_responsavel(osTecnico);
-                    ordemServico.setStatus_celular("Aberta");
                     boolean criadoComSucesso = new OS_Controller(CadastrarOrdemServicoActivity.this).create(ordemServico);
 
                     if (criadoComSucesso) {

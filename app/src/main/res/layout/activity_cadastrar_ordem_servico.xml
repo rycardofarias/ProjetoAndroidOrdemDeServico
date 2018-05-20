@@ -21,21 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnCancelarOId"
-        android:layout_width="151dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@android:color/background_dark"
-        android:text="Cancelar"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/btnCadastraOrdServId"
-        app:layout_constraintTop_toBottomOf="@+id/scrollviewid" />
+
 
     <ScrollView
         android:id="@+id/scrollviewid"
@@ -78,7 +64,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:text="001"
                 android:textSize="18sp" />
 
             <TextView
@@ -94,7 +79,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Teste"
                 android:textSize="18sp" />
 
             <TextView
@@ -110,7 +94,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Teste2"
                 android:textSize="18sp" />
 
             <TextView
@@ -126,7 +109,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:text="564356437"
                 android:textSize="18sp" />
 
             <TextView
@@ -142,7 +124,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="teste4"
                 android:textSize="18sp" />
 
             <TextView
@@ -158,7 +139,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="teste5"
                 android:textSize="18sp" />
 
             <TextView
@@ -174,7 +154,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="teste6"
                 android:textSize="18sp" />
 
             <TextView
@@ -190,7 +169,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="numberDecimal"
-                android:text="500.00"
                 android:textSize="18sp" />
 
             <TextView
@@ -206,23 +184,32 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="teste7"
                 android:textSize="18sp" />
+            <Button
+                android:id="@+id/btnCancelarOId"
+                android:layout_width="151dp"
+                android:layout_height="41dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@android:color/background_dark"
+                android:text="Cancelar"
+                android:textColor="@android:color/background_light"
+                />
+            <Button
+                android:id="@+id/btnCadastraOrdServId"
+                android:layout_width="151dp"
+                android:layout_height="41dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginStart="8dp"
+                android:background="@android:color/background_dark"
+                android:text="Adicionar"
+                android:textColor="@android:color/background_light"
+                />
 
         </LinearLayout>
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/btnCadastraOrdServId"
-        android:layout_width="151dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="8dp"
-        android:background="@android:color/background_dark"
-        android:text="Adicionar"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollviewid" />
+
 </android.support.constraint.ConstraintLayout>

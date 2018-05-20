@@ -32,7 +32,7 @@ public class DataBaseAdapter extends SQLiteOpenHelper {
                 "cidade TEXT , "+
                 "bairro TEXT , "+
                 "logadouro TEXT , "+
-                "numero INT ) ";
+                "numero TEXT ) ";
 
         String sql2 = "CREATE TABLE cliente "+
                 "( id INTEGER PRIMARY KEY AUTOINCREMENT, "+
@@ -52,7 +52,7 @@ public class DataBaseAdapter extends SQLiteOpenHelper {
                 "marca TEXT , "+
                 "data_entrada DATE , "+
                 "data_previsao_saida DATE , "+
-                "imei INT UNIQUE , "+
+                "imei INTEGER UNIQUE , "+
                 "acessorios TEXT , "+
                 "detalhes TEXT , "+
                 "defeito_reclamacao TEXT , "+

@@ -1,12 +1,13 @@
 package com.projetoengenharia.projetoengenharia.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Ricardo Farias on 19/04/2018.
  */
 
-public class Cliente {
+public class Cliente implements Serializable{
 
     private Integer id;
 

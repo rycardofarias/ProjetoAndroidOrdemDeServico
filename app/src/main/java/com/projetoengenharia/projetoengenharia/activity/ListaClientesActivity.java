@@ -3,6 +3,7 @@ package com.projetoengenharia.projetoengenharia.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -21,16 +22,32 @@ public class ListaClientesActivity extends AppCompatActivity {
     private Button btnVoltarCliente;
     ListView lvCliente;
     AdapterCliente adapterCliente;
-
+    SearchView sv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_clientes);
 
+        lvCliente = (ListView) findViewById(R.id.lvClientesId);
+        adapterCliente = new AdapterCliente(this, getCliente());
+        lvCliente.setAdapter(adapterCliente);
+
+        /*lvCliente.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                /*Cliente clienteEnviado = (Cliente) adapterCliente.getItem(i);
+                Intent x = new Intent(ListaClientesActivity.this, CadastroClienteActivity.class);
+                x.putExtra("cliente-enviado", clienteEnviado);
+                startActivity(x);
+                startActivity(new Intent(ListaClientesActivity.this, CadastroClienteActivity.class));
+            }
+        }); */
+
+        sv = (SearchView) findViewById(R.id.mSearch);
         //instanciando botões
         btnAdicionarcliente = findViewById(R.id.btnAdicionarClienteId);
-         btnVoltarCliente = findViewById(R.id.btnVoltarClienteId);
+        btnVoltarCliente = findViewById(R.id.btnVoltarClienteId);
 
         //criando ação de click do botão
         btnAdicionarcliente.setOnClickListener(new View.OnClickListener() {
@@ -46,11 +63,27 @@ public class ListaClientesActivity extends AppCompatActivity {
                 finish();
             }
         });
-        lvCliente = (ListView) findViewById(R.id.lvClientesId);
-        adapterCliente = new AdapterCliente(this, getCliente());
-        lvCliente.setAdapter(adapterCliente);
-        //contadorDeRegistro();
 
+        // teste
+        new ClienteController(this).buscarPeloId( 1);
+
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapterCliente.getFilter().filter(s);
+                return false;
+            }
+        });
+
+    }
+    public void editarContatoPeloId(int idCliente){
+        final ClienteController clienteController = new ClienteController(this);
+        final Cliente cliente = clienteController.buscarPeloId((Integer) adapterCliente.getItem(idCliente));
     }
 
     //

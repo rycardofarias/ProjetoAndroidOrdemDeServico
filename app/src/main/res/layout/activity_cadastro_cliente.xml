@@ -6,34 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.CadastroClienteActivity">
 
-    <Button
-        android:id="@+id/btnAdicionarCliId"
-        android:layout_width="151dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@android:color/background_dark"
-        android:text="Adicionar"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnCancelarClienteId"
-        android:layout_width="151dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/background_dark"
-        android:text="Cancelar"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnAdicionarCliId"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
@@ -41,7 +13,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAdicionarCliId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,12 +24,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/txtTituloCaastraClienteID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:padding="5dp"
-                android:text="Cdastrar Cliente"
+                android:text="Cadastrar Cliente"
                 android:textSize="18sp" />
 
             <TextView
@@ -74,7 +45,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Ricardo Farias"
                 android:textSize="18sp" />
 
             <TextView
@@ -90,7 +60,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:text="333.555.777-99"
                 android:textSize="18sp" />
 
             <TextView
@@ -106,7 +75,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:text="17/11/1995"
                 android:textSize="18sp" />
 
             <TextView
@@ -122,7 +90,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:text="83 999768839"
                 android:textSize="18sp" />
 
             <TextView
@@ -138,7 +105,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textEmailAddress"
-                android:text="ricardofariasxyz@gmail.com"
                 android:textSize="18sp" />
 
             <TextView
@@ -154,7 +120,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Paraíba"
                 android:textSize="18sp" />
 
             <TextView
@@ -170,7 +135,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Pombal"
                 android:textSize="18sp" />
 
             <TextView
@@ -186,7 +150,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="nova vida"
                 android:textSize="18sp" />
 
             <TextView
@@ -202,7 +165,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="jfjhj"
                 android:textSize="18sp" />
 
             <TextView
@@ -218,8 +180,31 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:text="678"
                 android:textSize="18sp" />
+            <Button
+                android:id="@+id/btnAdicionarCliId"
+                android:layout_width="151dp"
+                android:layout_height="41dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/background_dark"
+                android:text="Adicionar"
+                android:textColor="@android:color/background_light"
+                />
+
+            <Button
+                android:id="@+id/btnCancelarClienteId"
+                android:layout_width="151dp"
+                android:layout_height="41dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/background_dark"
+                android:text="Cancelar"
+                android:textColor="@android:color/background_light"
+                />
 
         </LinearLayout>
     </ScrollView>

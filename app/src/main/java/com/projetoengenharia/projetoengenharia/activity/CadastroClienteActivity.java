@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.projetoengenharia.projetoengenharia.Mascara;
 import com.projetoengenharia.projetoengenharia.R;
+import com.projetoengenharia.projetoengenharia.adapter.AdapterCliente;
 import com.projetoengenharia.projetoengenharia.contoller.ClienteController;
 import com.projetoengenharia.projetoengenharia.model.Cliente;
 import com.projetoengenharia.projetoengenharia.model.Endereco;
@@ -36,10 +37,17 @@ public class CadastroClienteActivity extends AppCompatActivity {
 
     private Button btnAdicionar;
     private Button btnCancelar;
+
+    Cliente editarCliente;
+
+    AdapterCliente adapterCliente;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_cliente);
+
+        Intent x = getIntent();//buscando alguma entidade que ja foi utilizada (editarCavalo)
+        editarCliente = (Cliente) x.getSerializableExtra("cliente-enviado");
 
         nomeCliente = (EditText) findViewById(R.id.edtNomeClienteId);
         cpf = (EditText) findViewById(R.id.editTextCpfId);
@@ -57,6 +65,27 @@ public class CadastroClienteActivity extends AppCompatActivity {
         btnAdicionar = (Button) findViewById(R.id.btnAdicionarCliId);
         btnCancelar = (Button) findViewById(R.id.btnCancelarClienteId);
 
+        if(editarCliente != null){
+            final ClienteController clienteController = new ClienteController(this);
+            final Cliente cliente = clienteController.buscarPeloId((editarCliente.getId()));
+            nomeCliente.setText(cliente.getNome());
+            cpf.setText(cliente.getCPF());
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            dataNascimento.setText(String.valueOf( formato.format(cliente.getDataNascimento())));
+            telefone.setText(cliente.getTelefone());
+            email.setText(cliente.getEmail());
+            estado.setText(cliente.getEndereco().getEstado());
+            cidade.setText(cliente.getEndereco().getCidade());
+            bairro.setText(cliente.getEndereco().getBairro());
+            rua.setText(cliente.getEndereco().getLogadouro());
+            numero.setText(cliente.getEndereco().getNumero());
+
+            cliente.setId(editarCliente.getId());
+
+            System.out.println("editarCliente Id  "+ editarCliente.getId());
+            System.out.println("Cliente Id " +cliente.getId());
+            Toast.makeText(CadastroClienteActivity.this, "legal", Toast.LENGTH_LONG).show();
+        }
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,7 +106,7 @@ public class CadastroClienteActivity extends AppCompatActivity {
                 String clienteCidade = cidade.getText().toString();
                 String clienteBairro = bairro.getText().toString();
                 String clienteRua = rua.getText().toString();
-                int clienteNumero = Integer.parseInt(numero.getText().toString());
+                String clienteNumero = (numero.getText().toString());
 
                 Cliente cliente = new Cliente();
                 Endereco endereco = new Endereco();
@@ -89,35 +118,90 @@ public class CadastroClienteActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+                endereco.setEstado(clienteEstado);
+                endereco.setCidade(clienteCidade);
+                endereco.setBairro(clienteBairro);
+                endereco.setLogadouro(clienteRua);
+                endereco.setNumero(clienteNumero);
+                System.out.println("numero " +numero + " getNumero "+ endereco.getNumero());
+                cliente.setEndereco(endereco);
+                cliente.setNome(clienteNome);
+                cliente.setCPF(clienteCpf);
+                cliente.setTelefone(clienteTelefone);
+                cliente.setEmail(clienteEmail);
                 validarCampos();
 
                 if (validacao == true) {
 
-                    endereco.setEstado(clienteEstado);
-                    endereco.setCidade(clienteCidade);
-                    endereco.setBairro(clienteBairro);
-                    endereco.setLogadouro(clienteRua);
-                    endereco.setNumero(clienteNumero);
-                    cliente.setEndereco(endereco);
-                    cliente.setNome(clienteNome);
-                    cliente.setCPF(clienteCpf);
-                    cliente.setTelefone(clienteTelefone);
-                    cliente.setEmail(clienteEmail);
+                    if (editarCliente != null) {
 
-                    boolean criadoComSucesso = new ClienteController(CadastroClienteActivity.this).create(cliente);
+                        Cliente novoCliente = new Cliente();
+                        Endereco novoEndereco = new Endereco();
 
-                    if (criadoComSucesso) {
-                        Toast.makeText(CadastroClienteActivity.this, "Cadastro Realizado com Sucesso", Toast.LENGTH_LONG).show();
-                        //((ListaClientesActivity) context).contadorDeRegistro();
-                        startActivity(new Intent(CadastroClienteActivity.this, ListaClientesActivity.class));
-                        finish();
-                    } else
-                        Toast.makeText(CadastroClienteActivity.this, "não foi possível efetuar o cadastro. Verifique os dados CPF, Telefone e E-mail se não há já um cliente cadastrado com esses dados", Toast.LENGTH_LONG).show();
+                        novoEndereco.setEstado(estado.getText().toString());
+                        novoEndereco.setCidade(cidade.getText().toString());
+                        novoEndereco.setBairro(bairro.getText().toString());
+                        novoEndereco.setLogadouro(rua.getText().toString());
+                        novoEndereco.setNumero(numero.getText().toString());
+
+                        novoCliente.setNome(nomeCliente.getText().toString());
+                        novoCliente.setCPF(cpf.getText().toString());
+                        String dataNasc = dataNascimento.getText().toString();
+
+                        SimpleDateFormat formato2 = new SimpleDateFormat("dd/MM/yyyy");
+                        try {
+                            Date data_nascimento2 = formato2.parse(dataNasc);
+                            novoCliente.setDataNascimento(data_nascimento2);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        novoCliente.setTelefone(telefone.getText().toString());
+                        novoCliente.setEmail(email.getText().toString());
+                        novoCliente.setEndereco(novoEndereco);
+                        //gambiarra
+                        novoCliente.getEndereco().setId(editarCliente.getId());
+                        novoCliente.setId(editarCliente.getId());
+
+                        System.out.println("2 editarCliente Id  "+ editarCliente.getId());
+                        System.out.println(" 2 Cliente Id " +cliente.getId());
+                        System.out.println(" 2 NovoCliente Id "+ novoCliente.getId());
+
+                        boolean alterandoCliente = new ClienteController(CadastroClienteActivity.this).updateCliente(novoCliente);
+                        if(alterandoCliente){
+
+                            Toast.makeText(CadastroClienteActivity.this, "Cliente Alterado com Sucesso", Toast.LENGTH_LONG).show();
+                            //((ListaClientesActivity) context).contadorDeRegistro();
+                            startActivity(new Intent(CadastroClienteActivity.this, ListaClientesActivity.class));
+                            finish();
+                        }else {
+                            Toast.makeText(CadastroClienteActivity.this, "Não foi possível alterar! Verifique os dados", Toast.LENGTH_LONG).show();
+                        }
+
+                    } else {
+                        boolean criadoComSucesso = new ClienteController(CadastroClienteActivity.this).create(cliente);
+
+                        if (criadoComSucesso) {
+                            Toast.makeText(CadastroClienteActivity.this, "Cadastro Realizado com Sucesso", Toast.LENGTH_LONG).show();
+                            //((ListaClientesActivity) context).contadorDeRegistro();
+                            startActivity(new Intent(CadastroClienteActivity.this, ListaClientesActivity.class));
+                            finish();
+                        } else {
+                            Toast.makeText(CadastroClienteActivity.this, "Não foi possível efetuar o cadastro. Verifique os dados CPF, Telefone e E-mail se não há já um cliente cadastrado com esses dados", Toast.LENGTH_LONG).show();
+                        }
+
+                    }
                 }
+               // System.out.println("numero " +numero + " getNumero "+ endereco.getNumero());
             }
         });
 
     }
+    public void editarContatoPeloId(int idCliente){
+        final ClienteController clienteController = new ClienteController(this);
+        final Cliente cliente = clienteController.buscarPeloId((Integer) adapterCliente.getItem(idCliente));
+        Toast.makeText(CadastroClienteActivity.this, "legal fera", Toast.LENGTH_LONG).show();
+    }
+
     private void validarCampos() {
         validacao = false;
 
@@ -166,6 +250,5 @@ public class CadastroClienteActivity extends AppCompatActivity {
             numero.requestFocus();
         } else
             validacao = true;
-
     }
 }

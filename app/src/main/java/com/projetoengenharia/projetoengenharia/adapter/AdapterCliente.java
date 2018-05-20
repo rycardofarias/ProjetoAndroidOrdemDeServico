@@ -9,13 +9,14 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 
-import com.projetoengenharia.projetoengenharia.R;
-import com.projetoengenharia.projetoengenharia.model.Cliente;
+import com.projetoengenharia.projetoengenharia.FiltroCustomizado;
 import com.projetoengenharia.projetoengenharia.ItemClickListener;
-import com.projetoengenharia.projetoengenharia.activity.MainActivity;
+import com.projetoengenharia.projetoengenharia.R;
+import com.projetoengenharia.projetoengenharia.activity.CadastroClienteActivity;
+import com.projetoengenharia.projetoengenharia.model.Cliente;
 import com.projetoengenharia.projetoengenharia.viewHolder.ClienteViewHolder;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by Ricardo Farias on 26/04/2018.
@@ -24,12 +25,16 @@ import java.util.List;
 public class AdapterCliente extends BaseAdapter implements Filterable {
 
     Context context;
-    List<Cliente> clientes;
+    public ArrayList<Cliente> clientes;
     LayoutInflater inflater;
 
-    public AdapterCliente(Context context, List<Cliente> clientes){
+    ArrayList<Cliente> filtrarLista;
+    FiltroCustomizado filtro;
+
+    public AdapterCliente(Context context, ArrayList<Cliente> clientes){
         this.context = context;
         this.clientes = clientes;
+        this.filtrarLista = clientes;
     }
 
     @Override
@@ -58,20 +63,28 @@ public class AdapterCliente extends BaseAdapter implements Filterable {
 
         //vincular dados as visualizações
         ClienteViewHolder holder = new ClienteViewHolder(view);
-        //holder.getImg().setImageResource(categorias.get(i).getImagemCategoria());
         holder.getNomeCliente().setText(clientes.get(i).getNome());
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View v) {
-                v.getContext().startActivity(new Intent(v.getContext(), MainActivity.class));
+                Cliente clienteEnviado = (Cliente) clientes.get(i);
+                Intent x = new Intent(v.getContext(), CadastroClienteActivity.class);
+                x.putExtra("cliente-enviado", clienteEnviado);
+                context.startActivity(x);
             }
         });
+
         return view;
     }
 
     @Override
     public Filter getFilter() {
-        return null;
+
+        if (filtro == null ){
+            filtro = new FiltroCustomizado(filtrarLista, this);
+
+        }
+        return filtro;
     }
 }

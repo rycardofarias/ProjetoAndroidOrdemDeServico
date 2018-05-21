@@ -86,6 +86,7 @@ public class CadastrarOrdemServicoActivity extends AppCompatActivity {
                 String osDefeito = defeito.getText().toString();
                 String osValorPrevio = valorPrevio.getText().toString();
                 String osTecnico = tecnico.getText().toString();
+                String osValorFinal = "";
 
                 OrdemServico ordemServico = new OrdemServico();
 
@@ -105,6 +106,7 @@ public class CadastrarOrdemServicoActivity extends AppCompatActivity {
                 ordemServico.setDefeito_reclamacao(osDefeito);
                 ordemServico.setValor_previo((osValorPrevio));
                 ordemServico.setTecnico_responsavel(osTecnico);
+                ordemServico.setValor_final(osValorFinal);
                 ordemServico.setStatus_celular("Aberta");
 
                 validarCampos();

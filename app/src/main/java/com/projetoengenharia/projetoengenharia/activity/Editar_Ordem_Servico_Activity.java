@@ -46,7 +46,6 @@ public class Editar_Ordem_Servico_Activity extends AppCompatActivity {
     private List<String> opcoes = new ArrayList<String>();
     private String nomeOp;
     OrdemServico editarOS;
-    AdapterOS adapterOS;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,34 +54,7 @@ public class Editar_Ordem_Servico_Activity extends AppCompatActivity {
         Intent y = getIntent();
         editarOS = (OrdemServico) y.getSerializableExtra("os-enviado");
 
-        opcoes.add("Em andamento");
-        opcoes.add("Concluída");
-
         status = findViewById(R.id.spinnerStatusId);
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opcoes);
-        ArrayAdapter<String> spinnerArrayAdapter = arrayAdapter;
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        status.setAdapter(spinnerArrayAdapter);
-
-        //Método do Spinner para capturar o item selecionado
-        status.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                nomeOp = adapterView.getItemAtPosition(i).toString();
-                if (nomeOp == "Concluída"){
-                    valor_final.setVisibility(View.VISIBLE);
-                }
-                else
-                    valor_final.setVisibility(View.INVISIBLE);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
         valor_final = findViewById(R.id.txtValorFinalId);
         numeroOSMarcaModelo= findViewById(R.id.txtNumeroMarcaModeloId);
         txtCliente= findViewById(R.id.txtClienteId);
@@ -95,7 +67,6 @@ public class Editar_Ordem_Servico_Activity extends AppCompatActivity {
         defeito= findViewById(R.id.txtDefeitoId);
         valorPrevio= findViewById(R.id.txtValorPrevioId);
         tecnico= findViewById(R.id.txtTecnicoResponsavelId);
-
         btnAlterarOrdServ = findViewById(R.id.btnOrdemServicoAlterarId);
         btnvoltarOrdServ = findViewById(R.id.btnOrdemServicoVoltarId);
 
@@ -104,10 +75,46 @@ public class Editar_Ordem_Servico_Activity extends AppCompatActivity {
             final OS_Controller os_controller = new OS_Controller(this);
             final OrdemServico ordemServico = os_controller.buscapeloId(editarOS.getId());
 
+            String testeStatus = (ordemServico.getStatus_celular());
+            System.out.println("status "+testeStatus);
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opcoes);
+                ArrayAdapter<String> spinnerArrayAdapter = arrayAdapter;
+                spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                opcoes.add("Aberta");
+                opcoes.add("Concluída");
+                if(ordemServico.getValor_final().length()<=0){
+                    System.out.println("entrou no if ");
+                    status.setEnabled(true);
+                    valor_final.setEnabled(true);
+                }else{
+                    System.out.println("entrou no else ");
+                    opcoes.remove(0);
+                    status.setEnabled(false);
+                    valor_final.setEnabled(false);
+                }
+                status.setAdapter(spinnerArrayAdapter);
+                //Método do Spinner para capturar o item selecionado
+                status.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        nomeOp = adapterView.getItemAtPosition(i).toString();
+                        if (nomeOp == "Concluída") {
+                            valor_final.setVisibility(View.VISIBLE);
+                        } else{
+                            valor_final.setVisibility(View.INVISIBLE);
+                            valor_final.setText(null);
+                        }
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+
+            valor_final.setText(ordemServico.getValor_final());
             numeroOSMarcaModelo.setText("Smartphone "+ ordemServico.getMarca()+" "+ordemServico.getModelo()+" - "+ordemServico.getNumero_ordem_servico());
             txtCliente.setText(editarOS.getCliente().getNome());
-            //System.out.println("txt Cliente "+ txtCliente);
-            //System.out.println(ordemServico.getCliente().getNome().toString());
             modelo.setText(ordemServico.getModelo());
             marca.setText(ordemServico.getMarca());
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -119,13 +126,8 @@ public class Editar_Ordem_Servico_Activity extends AppCompatActivity {
             valorPrevio.setText(ordemServico.getValor_previo());
             tecnico.setText(ordemServico.getTecnico_responsavel());
 
-            valor_final.setText("");
-
             ordemServico.setId(editarOS.getId());
 
-
-            System.out.println("ord ser"+ordemServico.toString());
-            System.out.println("edt os"+editarOS.toString());
             Toast.makeText(Editar_Ordem_Servico_Activity.this, "legal //////", Toast.LENGTH_LONG).show();
 
          }
@@ -137,6 +139,7 @@ public class Editar_Ordem_Servico_Activity extends AppCompatActivity {
 
                      novoOS.setStatus_celular(nomeOp);
                      novoOS.setValor_final(valor_final.getText().toString());
+
                      novoOS.setId(editarOS.getId());
                      validarCampos();
                  if (validacao==true){

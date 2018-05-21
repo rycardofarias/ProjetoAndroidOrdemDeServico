@@ -30,31 +30,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        /*Cliente cliente = new Cliente();
-        ClienteController clienteController = new ClienteController(getApplicationContext());
-        Date date = new Date();
-        Endereco endereco = new Endereco();
-
-        date.setTime(2000-12-12);
-
-        endereco.setEstado("Para");
-        endereco.setCidade("Pa");
-        endereco.setBairro("ra");
-        endereco.setLogadouro("gfsgPara");
-        endereco.setNumero(232);
-        cliente.setEndereco(endereco);
-
-
-        cliente.setNome("Ricardo");
-        cliente.setCPF("25425");
-        cliente.setDataNascimento(date);
-        cliente.setTelefone("4536457");
-        cliente.setEmail("sdag");
-
-        clienteController.create(cliente);*/
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -68,13 +43,6 @@ public class MainActivity extends AppCompatActivity
         btnCliente = (ImageView) findViewById(R.id.btnEditarClienteId);
         btnOrdemServico= (ImageView) findViewById(R.id.btnOrdemServicoId);
 
-        //criando a ação de click de botão
-        /*btnCliente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //startActivity(new Intent(MainActivity.this, ListaClientesActivity.class));
-            }
-        });*/
         btnCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,19 +114,6 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-    public void contadorDeRegistro() {
-        String msg = "";
-        int contador = new ClienteController(this).totalclientes();
-
-        //TextView txtContadorCliente = findViewById(R.id.contadorClienteId);
-
-        if (contador == 0) {
-            msg = "Nenhum cliente cadastrado";
-        }  else {
-            msg = contador + " Clientes cadastrados";
-        }
-        //txtContadorCliente.setText(msg);
     }
 
 }

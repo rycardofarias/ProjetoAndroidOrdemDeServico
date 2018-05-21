@@ -32,17 +32,7 @@ public class ListaClientesActivity extends AppCompatActivity {
         lvCliente = (ListView) findViewById(R.id.lvClientesId);
         adapterCliente = new AdapterCliente(this, getCliente());
         lvCliente.setAdapter(adapterCliente);
-
-        /*lvCliente.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                /*Cliente clienteEnviado = (Cliente) adapterCliente.getItem(i);
-                Intent x = new Intent(ListaClientesActivity.this, CadastroClienteActivity.class);
-                x.putExtra("cliente-enviado", clienteEnviado);
-                startActivity(x);
-                startActivity(new Intent(ListaClientesActivity.this, CadastroClienteActivity.class));
-            }
-        }); */
+        
 
         sv = (SearchView) findViewById(R.id.mSearch);
         //instanciando botões
@@ -80,10 +70,6 @@ public class ListaClientesActivity extends AppCompatActivity {
             }
         });
 
-    }
-    public void editarContatoPeloId(int idCliente){
-        final ClienteController clienteController = new ClienteController(this);
-        final Cliente cliente = clienteController.buscarPeloId((Integer) adapterCliente.getItem(idCliente));
     }
 
     //

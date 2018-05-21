@@ -170,7 +170,6 @@ public class CadastroClienteActivity extends AppCompatActivity {
                         if(alterandoCliente){
 
                             Toast.makeText(CadastroClienteActivity.this, "Cliente Alterado com Sucesso", Toast.LENGTH_LONG).show();
-                            //((ListaClientesActivity) context).contadorDeRegistro();
                             startActivity(new Intent(CadastroClienteActivity.this, ListaClientesActivity.class));
                             finish();
                         }else {
@@ -182,7 +181,6 @@ public class CadastroClienteActivity extends AppCompatActivity {
 
                         if (criadoComSucesso) {
                             Toast.makeText(CadastroClienteActivity.this, "Cadastro Realizado com Sucesso", Toast.LENGTH_LONG).show();
-                            //((ListaClientesActivity) context).contadorDeRegistro();
                             startActivity(new Intent(CadastroClienteActivity.this, ListaClientesActivity.class));
                             finish();
                         } else {
@@ -191,7 +189,6 @@ public class CadastroClienteActivity extends AppCompatActivity {
 
                     }
                 }
-               // System.out.println("numero " +numero + " getNumero "+ endereco.getNumero());
             }
         });
 

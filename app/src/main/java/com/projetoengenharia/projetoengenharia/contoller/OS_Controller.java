@@ -38,7 +38,6 @@ public class OS_Controller extends DataBaseAdapter {
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             values.put("data_entrada", dateFormat.format(ordemServico.getData_entrada()));
-            //values.put("data_saida",dateFormat.format(ordemServico.getPrevisao_saida()));
 
             values.put("imei", ordemServico.getIMEI());
             values.put("acessorios", ordemServico.getAcessorios());
@@ -93,8 +92,7 @@ public class OS_Controller extends DataBaseAdapter {
                 String modelo = cursor.getString(cursor.getColumnIndex("modelo"));
                 String marca = cursor.getString(cursor.getColumnIndex("marca"));
                 String data_entrada = cursor.getString(cursor.getColumnIndex("data_entrada"));
-                //String valor_previo = cursor.getString(cursor.getColumnIndex("valor_previo"));
-                //String clien = cursor.getString(cursor.getColumnIndex("cliente_id"));
+                String valor_final = cursor.getString(cursor.getColumnIndex("valor_final"));
                 int cliente_id = cursor.getInt(cursor.getColumnIndex("cliente_id"));
                 System.out.println("Cliente id"+ cliente_id);
                 OrdemServico ordemServico = new OrdemServico();
@@ -102,6 +100,7 @@ public class OS_Controller extends DataBaseAdapter {
                 ordemServico.setNumero_ordem_servico(numero_ordem_servico);
                 ordemServico.setStatus_celular(status);
                 ordemServico.setModelo(modelo);
+                ordemServico.setValor_final(valor_final);
                 ordemServico.setMarca(marca);
 
                 SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
@@ -121,7 +120,6 @@ public class OS_Controller extends DataBaseAdapter {
                     cliente.setId(Integer.valueOf(cliente_id));
                     cliente.setNome(nome);
                 }
-                //ordemServico.setValor_previo(valor_previo);
                 ordemServico.setCliente(cliente);
                 ordemServicos.add(ordemServico);
             }while (cursor.moveToNext());
@@ -140,11 +138,11 @@ public class OS_Controller extends DataBaseAdapter {
 
             String numero = cursor.getString(cursor.getColumnIndex("numero_ordem_servico"));
             String status= cursor.getString(cursor.getColumnIndex("status"));
-            //String valorFinal= cursor.getString(cursor.getColumnIndex("valor_final"));
+            String valorFinal= cursor.getString(cursor.getColumnIndex("valor_final"));
             String modelo= cursor.getString(cursor.getColumnIndex("modelo"));
             String marca= cursor.getString(cursor.getColumnIndex("marca"));
             String data_entrada= cursor.getString(cursor.getColumnIndex("data_entrada"));
-            //String data_saida= cursor.getString(cursor.getColumnIndex("data_previsao_saida"));
+
             String imei= cursor.getString(cursor.getColumnIndex("imei"));
             String acessorios= cursor.getString(cursor.getColumnIndex("acessorios"));
             String detalhes= cursor.getString(cursor.getColumnIndex("detalhes"));
@@ -169,6 +167,7 @@ public class OS_Controller extends DataBaseAdapter {
             ordemServico.setDetalhes(detalhes);
             ordemServico.setDefeito_reclamacao(defeito);
             ordemServico.setValor_previo(valorPrevio);
+            ordemServico.setValor_final(valorFinal);
             ordemServico.setTecnico_responsavel(tecnico);
 
 

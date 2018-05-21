@@ -62,7 +62,6 @@ public class AdapterOS extends BaseAdapter implements Filterable {
 
         //vincular dados as visualizações
         OrdemServicoViewHolder  holder = new OrdemServicoViewHolder(view);
-        //holder.getImg().setImageResource(categorias.get(i).getImagemCategoria());
 
         String eximarcamodelo = ((ordemServicos.get(i).getMarca()+" "+ordemServicos.get(i).getModelo()));
 
@@ -79,7 +78,6 @@ public class AdapterOS extends BaseAdapter implements Filterable {
             public void onItemClick(View v) {
                 OrdemServico ordemServicoEnviado = (OrdemServico) ordemServicos.get(i);
                 Intent y = new Intent(v.getContext(), Editar_Ordem_Servico_Activity.class);
-                v.getContext().startActivity(new Intent(v.getContext(), Editar_Ordem_Servico_Activity.class));
                 y.putExtra("os-enviado", ordemServicoEnviado);
                 context.startActivity(y);
             }

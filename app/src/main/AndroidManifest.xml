@@ -26,9 +26,12 @@
         <activity
             android:name=".activity.ListaOrdemServicoActivity"
             android:parentActivityName=".activity.MainActivity" />
-        <activity android:name=".activity.Editar_Ordem_Servico_Activity" />
-        <activity android:name=".activity.CadastroClienteActivity" />
-        <activity android:name=".activity.CadastrarOrdemServicoActivity"></activity>
+        <activity android:name=".activity.Editar_Ordem_Servico_Activity"
+            android:parentActivityName=".activity.ListaOrdemServicoActivity"/>
+        <activity android:name=".activity.CadastroClienteActivity"
+            android:parentActivityName=".activity.ListaClientesActivity"/>
+        <activity android:name=".activity.CadastrarOrdemServicoActivity"
+            android:parentActivityName=".activity.ListaOrdemServicoActivity"></activity>
     </application>
 
 </manifest>

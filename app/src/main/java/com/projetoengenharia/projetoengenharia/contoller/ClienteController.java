@@ -137,6 +137,7 @@ public class ClienteController extends DataBaseAdapter{
         if (cursor2.moveToFirst()){
 
             endereco = new Endereco();
+
             String nome= cursor2.getString(cursor2.getColumnIndex("nome"));
             String cpf= cursor2.getString(cursor2.getColumnIndex("cpf"));
             String dataNascimento= cursor2.getString(cursor2.getColumnIndex("data_nascimento"));

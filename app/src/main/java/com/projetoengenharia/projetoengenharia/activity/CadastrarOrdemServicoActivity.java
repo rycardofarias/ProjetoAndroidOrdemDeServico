@@ -54,6 +54,7 @@ public class CadastrarOrdemServicoActivity extends AppCompatActivity {
         tecnico = (EditText) findViewById(R.id.edtTecnicoId);
         btnCadastrarOrdServ = (Button) findViewById(R.id.btnCadastraOrdServId);
         btnCancelarOrdServ = (Button) findViewById(R.id.btnCancelarOId);
+
         ClienteController clienteController = new ClienteController(CadastrarOrdemServicoActivity.this);
         // Array Adapter que é definido como adapter do spinner
         ArrayAdapter adapter = new ArrayAdapter(CadastrarOrdemServicoActivity.this, android.R.layout.simple_spinner_item,clienteController.listCliente());
@@ -72,7 +73,7 @@ public class CadastrarOrdemServicoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Cliente cliente = new Cliente();
 
-                Integer osNumero = Integer.valueOf(numeroOS.getText().toString());
+                String osNumero =(numeroOS.getText().toString());
 
                 Cliente osCliente = (Cliente) escolher_cliente.getSelectedItem();
                 int id = osCliente.getId();
@@ -92,16 +93,17 @@ public class CadastrarOrdemServicoActivity extends AppCompatActivity {
                 Date data = new Date();
                 ordemServico.setData_entrada(data);
                 cliente.setId(id);
+
                 ordemServico.setCliente(cliente);
 
                 ordemServico.setNumero_ordem_servico(osNumero);
                 ordemServico.setModelo(osModelo);
                 ordemServico.setMarca(osMarca);
-                ordemServico.setIMEI(Integer.valueOf(osImei));
+                ordemServico.setIMEI((osImei));
                 ordemServico.setAcessorios(osAcessorios);
                 ordemServico.setDetalhes(osDetalhes);
                 ordemServico.setDefeito_reclamacao(osDefeito);
-                ordemServico.setValor_previo(Double.valueOf(osValorPrevio));
+                ordemServico.setValor_previo((osValorPrevio));
                 ordemServico.setTecnico_responsavel(osTecnico);
                 ordemServico.setStatus_celular("Aberta");
 

@@ -22,7 +22,7 @@
         app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
 
     <Button
-        android:id="@+id/btnOrdemServicoConfirmarId"
+        android:id="@+id/btnOrdemServicoAlterarId"
         android:layout_width="151dp"
         android:layout_height="41dp"
         android:layout_marginBottom="8dp"
@@ -40,8 +40,12 @@
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="448dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -49,7 +53,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView30"
+                android:id="@+id/txtNumeroMarcaModeloId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
@@ -110,19 +114,7 @@
                 android:text="Status do Celular"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView30" />
-
-            <TextView
-                android:id="@+id/textView32"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="7dp"
-                android:layout_marginStart="8dp"
-                android:padding="5dp"
-                android:text="Nome"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView31" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNumeroMarcaModeloId" />
 
             <TextView
                 android:id="@+id/textView33"
@@ -130,11 +122,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:padding="5dp"
                 android:text="@string/txt_modelo_produto"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView32" />
+                app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
             <TextView
                 android:id="@+id/textView34"
@@ -161,28 +154,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
             <TextView
-                android:id="@+id/textView36"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="7dp"
-                android:layout_marginStart="8dp"
-                android:padding="5dp"
-                android:text="@string/txt_data_saida"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView35" />
-
-            <TextView
                 android:id="@+id/textView37"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:padding="5dp"
                 android:text="@string/txt_IMEI"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView36" />
+                app:layout_constraintTop_toBottomOf="@+id/textView35" />
 
             <TextView
                 android:id="@+id/textView38"
@@ -219,7 +201,7 @@
                 android:text="Defeito"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView56" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDetalhesId" />
 
             <TextView
                 android:id="@+id/textView17"
@@ -232,19 +214,19 @@
                 android:text="Tecnico Responsavel"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView55" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDefeitoId" />
 
             <Spinner
-                android:id="@+id/spinner3"
+                android:id="@+id/spinnerStatusId"
                 android:layout_width="208dp"
                 android:layout_height="28dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView30" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNumeroMarcaModeloId" />
 
             <TextView
-                android:id="@+id/textView47"
+                android:id="@+id/txtModeloId"
                 android:layout_width="209dp"
                 android:layout_height="28dp"
                 android:layout_margin="7dp"
@@ -252,25 +234,11 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:text="Galaxy Gran Prime"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView46" />
+                app:layout_constraintTop_toBottomOf="@+id/txtClienteId" />
 
             <TextView
-                android:id="@+id/textView46"
-                android:layout_width="209dp"
-                android:layout_height="28dp"
-                android:layout_margin="7dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:gravity="center_vertical"
-                android:padding="5dp"
-                android:text="SmarthPhone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView54" />
-
-            <TextView
-                android:id="@+id/textView54"
+                android:id="@+id/txtClienteId"
                 android:layout_width="209dp"
                 android:layout_height="27dp"
                 android:layout_margin="7dp"
@@ -278,12 +246,11 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:text="Ricardo de Sousa Farias"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView57" />
+                app:layout_constraintTop_toBottomOf="@+id/txtValorPrevioId" />
 
             <TextView
-                android:id="@+id/textView53"
+                android:id="@+id/txtMarcaId"
                 android:layout_width="209dp"
                 android:layout_height="28dp"
                 android:layout_margin="7dp"
@@ -291,12 +258,11 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:text="Sansung"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView47" />
+                app:layout_constraintTop_toBottomOf="@+id/txtModeloId" />
 
             <TextView
-                android:id="@+id/textView52"
+                android:id="@+id/txtDataEntradaId"
                 android:layout_width="209dp"
                 android:layout_height="28dp"
                 android:layout_margin="7dp"
@@ -304,25 +270,11 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:text="15/04/2018"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView53" />
+                app:layout_constraintTop_toBottomOf="@+id/txtMarcaId" />
 
             <TextView
-                android:id="@+id/textView51"
-                android:layout_width="209dp"
-                android:layout_height="28dp"
-                android:layout_margin="7dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginTop="8dp"
-                android:gravity="center_vertical"
-                android:padding="5dp"
-                android:text="20/04/2018"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView52" />
-
-            <TextView
-                android:id="@+id/textView50"
+                android:id="@+id/txtImeiId"
                 android:layout_width="209dp"
                 android:layout_height="28dp"
                 android:layout_margin="7dp"
@@ -330,39 +282,37 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:text="76876822"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView51" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDataEntradaId" />
 
             <TextView
-                android:id="@+id/textView49"
+                android:id="@+id/txtAcessoriosId"
                 android:layout_width="209dp"
                 android:layout_height="28dp"
                 android:layout_margin="7dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:text="Carregador"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView50" />
+                app:layout_constraintTop_toBottomOf="@+id/txtImeiId" />
 
             <EditText
-                android:id="@+id/textView48"
+                android:id="@+id/txtValorFinalId"
                 android:layout_width="209dp"
                 android:layout_height="28dp"
                 android:layout_margin="7dp"
                 android:layout_marginEnd="92dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                android:visibility="invisible"
                 android:gravity="center_vertical"
                 android:inputType="textPersonName"
                 android:padding="5dp"
-                android:text="300"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+                app:layout_constraintTop_toBottomOf="@+id/spinnerStatusId" />
 
             <TextView
-                android:id="@+id/textView57"
+                android:id="@+id/txtValorPrevioId"
                 android:layout_width="209dp"
                 android:layout_height="28dp"
                 android:layout_margin="7dp"
@@ -370,12 +320,11 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:text="500"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView48" />
+                app:layout_constraintTop_toBottomOf="@+id/txtValorFinalId" />
 
             <TextView
-                android:id="@+id/textView55"
+                android:id="@+id/txtDefeitoId"
                 android:layout_width="209dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
@@ -383,33 +332,32 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:text="Tela quebrada, bateria viciada, microfone não funciona, teclado não funciona"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView56" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDetalhesId" />
 
             <TextView
-                android:id="@+id/textView28"
+                android:id="@+id/txtTecnicoResponsavelId"
                 android:layout_width="209dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:text="Ricardo Sousa"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView55" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDefeitoId" />
 
             <TextView
-                android:id="@+id/textView56"
+                android:id="@+id/txtDetalhesId"
                 android:layout_width="209dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:text="Tela quebrada, bateria viciada, microfone não funciona, teclado não funciona"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView49" />
+                app:layout_constraintTop_toBottomOf="@+id/txtAcessoriosId" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

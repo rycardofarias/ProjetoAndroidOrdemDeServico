@@ -1,31 +1,32 @@
 package com.projetoengenharia.projetoengenharia.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Ricardo Farias on 19/04/2018.
  */
 
-public class OrdemServico {
+public class OrdemServico implements Serializable{
 
     private Integer id;
 
     private Cliente cliente;
 
-    private int numero_ordem_servico;
+    private String numero_ordem_servico;
     private String modelo;
     private String marca;
     private Date data_entrada;
     private Date previsao_saida;
-    private Integer IMEI;
+    private String IMEI;
     private String acessorios;
     private String detalhes;
     private String defeito_reclamacao;
-    private Double valor_previo;
+    private String valor_previo;
     private String tecnico_responsavel;
 
     private String status_celular;
-    private Double valor_final;
+    private String valor_final;
 
     public OrdemServico(){
 
@@ -47,11 +48,11 @@ public class OrdemServico {
         this.cliente = cliente;
     }
 
-    public int getNumero_ordem_servico() {
+    public String getNumero_ordem_servico() {
         return numero_ordem_servico;
     }
 
-    public void setNumero_ordem_servico(int numero_ordem_servico) {
+    public void setNumero_ordem_servico(String numero_ordem_servico) {
         this.numero_ordem_servico = numero_ordem_servico;
     }
 
@@ -87,11 +88,11 @@ public class OrdemServico {
         this.previsao_saida = previsao_saida;
     }
 
-    public Integer getIMEI() {
+    public String getIMEI() {
         return IMEI;
     }
 
-    public void setIMEI(Integer IMEI) {
+    public void setIMEI(String IMEI) {
         this.IMEI = IMEI;
     }
 
@@ -119,11 +120,11 @@ public class OrdemServico {
         this.defeito_reclamacao = defeito_reclamacao;
     }
 
-    public Double getValor_previo() {
+    public String getValor_previo() {
         return valor_previo;
     }
 
-    public void setValor_previo(Double valor_previo) {
+    public void setValor_previo(String valor_previo) {
         this.valor_previo = valor_previo;
     }
 
@@ -143,11 +144,16 @@ public class OrdemServico {
         this.status_celular = status_celular;
     }
 
-    public Double getValor_final() {
+    public String getValor_final() {
         return valor_final;
     }
 
-    public void setValor_final(Double valor_final) {
+    public void setValor_final(String valor_final) {
         this.valor_final = valor_final;
+    }
+
+    @Override
+    public String toString() {
+        return status_celular;
     }
 }

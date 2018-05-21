@@ -29,7 +29,7 @@ public class ClienteViewHolder implements View.OnClickListener {
     }
 
     //ligando os dados dos campos/botões para as varieveis.
-        public ClienteViewHolder(View v) {
+    public ClienteViewHolder(View v) {
 
         nomeCliente = (TextView) v.findViewById(R.id.exibiNumeroId);
         btnEditar = (ImageView)v.findViewById(R.id.btnEditarClienteId);

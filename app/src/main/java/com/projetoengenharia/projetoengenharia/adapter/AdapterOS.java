@@ -10,6 +10,8 @@ import android.widget.Filter;
 import android.widget.Filterable;
 
 import com.projetoengenharia.projetoengenharia.R;
+import com.projetoengenharia.projetoengenharia.activity.Editar_Ordem_Servico_Activity;
+import com.projetoengenharia.projetoengenharia.model.Cliente;
 import com.projetoengenharia.projetoengenharia.model.OrdemServico;
 import com.projetoengenharia.projetoengenharia.ItemClickListener;
 import com.projetoengenharia.projetoengenharia.activity.MainActivity;
@@ -49,7 +51,7 @@ public class AdapterOS extends BaseAdapter implements Filterable {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
 
         if (inflater == null) {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -66,7 +68,7 @@ public class AdapterOS extends BaseAdapter implements Filterable {
 
         holder.getExibiNumeroOS().setText(String.valueOf(("Numero da OS - "+ordemServicos.get(i).getNumero_ordem_servico())));
         holder.getExibiModeloMarca().setText(eximarcamodelo);
-        //holder.getExibiCliente().setText(ordemServicos.get(i).getCliente().getNome());
+        holder.getExibiCliente().setText(ordemServicos.get(i).getCliente().getNome());
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
         String dataCorrigida = formato.format(ordemServicos.get(i).getData_entrada());
         holder.getExibiData_entrada().setText(dataCorrigida);
@@ -75,7 +77,11 @@ public class AdapterOS extends BaseAdapter implements Filterable {
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View v) {
-                v.getContext().startActivity(new Intent(v.getContext(), MainActivity.class));
+                OrdemServico ordemServicoEnviado = (OrdemServico) ordemServicos.get(i);
+                Intent y = new Intent(v.getContext(), Editar_Ordem_Servico_Activity.class);
+                v.getContext().startActivity(new Intent(v.getContext(), Editar_Ordem_Servico_Activity.class));
+                y.putExtra("os-enviado", ordemServicoEnviado);
+                context.startActivity(y);
             }
         });
 

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -22,7 +23,7 @@ public class ListaClientesActivity extends AppCompatActivity {
     private Button btnVoltarCliente;
     ListView lvCliente;
     AdapterCliente adapterCliente;
-    SearchView sv;
+    SearchView searchViewCliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,32 +33,21 @@ public class ListaClientesActivity extends AppCompatActivity {
         lvCliente = (ListView) findViewById(R.id.lvClientesId);
         adapterCliente = new AdapterCliente(this, getCliente());
         lvCliente.setAdapter(adapterCliente);
-        
 
-        sv = (SearchView) findViewById(R.id.mSearch);
+        searchViewCliente = (SearchView) findViewById(R.id.mSearchClienteId);
         //instanciando botões
         btnAdicionarcliente = findViewById(R.id.btnAdicionarClienteId);
-        btnVoltarCliente = findViewById(R.id.btnVoltarClienteId);
 
         //criando ação de click do botão
         btnAdicionarcliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ListaClientesActivity.this, CadastroClienteActivity.class));
-            }
-        });
-        btnVoltarCliente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ListaClientesActivity.this, MainActivity.class));
                 finish();
             }
         });
 
-        // teste
-        new ClienteController(this).buscarPeloId( 1);
-
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchViewCliente.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 return false;
@@ -71,13 +61,17 @@ public class ListaClientesActivity extends AppCompatActivity {
         });
 
     }
-
     //
     private ArrayList<Cliente> getCliente() {
         ArrayList <Cliente> clientes2 = (ArrayList<Cliente>) new ClienteController(this).listCliente();
         System.out.println(clientes2);
         return clientes2;
+    }
 
+    @Override
+    protected void onResume() {
+        getCliente();
+        super.onResume();
     }
 
     @Override

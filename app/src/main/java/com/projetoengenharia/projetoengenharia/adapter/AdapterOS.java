@@ -9,16 +9,15 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 
+import com.projetoengenharia.projetoengenharia.filtro.FiltroCustomizadoOS;
 import com.projetoengenharia.projetoengenharia.R;
 import com.projetoengenharia.projetoengenharia.activity.Editar_Ordem_Servico_Activity;
-import com.projetoengenharia.projetoengenharia.model.Cliente;
 import com.projetoengenharia.projetoengenharia.model.OrdemServico;
 import com.projetoengenharia.projetoengenharia.ItemClickListener;
-import com.projetoengenharia.projetoengenharia.activity.MainActivity;
 import com.projetoengenharia.projetoengenharia.viewHolder.OrdemServicoViewHolder;
 
 import java.text.SimpleDateFormat;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by Ricardo Farias on 01/05/2018.
@@ -27,12 +26,16 @@ import java.util.List;
 public class AdapterOS extends BaseAdapter implements Filterable {
 
     Context context;
-    List<OrdemServico> ordemServicos;
+    public ArrayList<OrdemServico> ordemServicos;
     LayoutInflater inflater;
 
-    public AdapterOS(Context context, List<OrdemServico> ordemServicos){
+    ArrayList<OrdemServico> filtrarListaOS;
+    FiltroCustomizadoOS filtroOS;
+
+    public AdapterOS(Context context, ArrayList<OrdemServico> ordemServicos){
         this.context =context;
         this.ordemServicos = ordemServicos;
+        this.filtrarListaOS = ordemServicos;
     }
 
     @Override
@@ -88,6 +91,14 @@ public class AdapterOS extends BaseAdapter implements Filterable {
 
     @Override
     public Filter getFilter() {
-        return null;
+        if (filtroOS == null ){
+            filtroOS = new FiltroCustomizadoOS(filtrarListaOS, this);
+
+        }
+        return filtroOS;
+    }
+    public void removeItem(int positionToRemove){
+        ordemServicos.remove(positionToRemove);
+        notifyDataSetChanged();
     }
 }

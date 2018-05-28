@@ -41,6 +41,7 @@ public class DataBaseAdapter extends SQLiteOpenHelper {
                 "data_nascimento DATE , "+
                 "telefone TEXT UNIQUE , "+
                 "email TEXT UNIQUE , "+
+                "ativo BOOLEAN , "+
                 "endereco_id INTEGER , "+
                 "FOREIGN KEY(endereco_id) REFERENCES endereco(id))";
 
@@ -51,7 +52,6 @@ public class DataBaseAdapter extends SQLiteOpenHelper {
                 "modelo TEXT , "+
                 "marca TEXT , "+
                 "data_entrada DATE , "+
-                "data_previsao_saida DATE , "+
                 "imei INTEGER UNIQUE , "+
                 "acessorios TEXT , "+
                 "detalhes TEXT , "+

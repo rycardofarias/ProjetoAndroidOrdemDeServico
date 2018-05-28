@@ -1,4 +1,4 @@
-package com.projetoengenharia.projetoengenharia;
+package com.projetoengenharia.projetoengenharia.filtro;
 
 import android.widget.Filter;
 
@@ -7,12 +7,12 @@ import com.projetoengenharia.projetoengenharia.model.Cliente;
 
 import java.util.ArrayList;
 
-public class FiltroCustomizado extends Filter {
+public class FiltroCustomizadoCliente extends Filter {
 
     ArrayList<Cliente> filtarLista;
     AdapterCliente adapterCliente;
 
-    public FiltroCustomizado(ArrayList<Cliente> filtarLista, AdapterCliente adapterCliente){
+    public FiltroCustomizadoCliente(ArrayList<Cliente> filtarLista, AdapterCliente adapterCliente){
         this.filtarLista = filtarLista;
         this.adapterCliente = adapterCliente;
     }

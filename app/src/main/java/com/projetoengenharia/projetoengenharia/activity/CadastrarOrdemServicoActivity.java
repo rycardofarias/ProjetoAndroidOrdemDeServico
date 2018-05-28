@@ -53,7 +53,6 @@ public class CadastrarOrdemServicoActivity extends AppCompatActivity {
         valorPrevio = (EditText) findViewById(R.id.edtValorPrevioId);
         tecnico = (EditText) findViewById(R.id.edtTecnicoId);
         btnCadastrarOrdServ = (Button) findViewById(R.id.btnCadastraOrdServId);
-        btnCancelarOrdServ = (Button) findViewById(R.id.btnCancelarOId);
 
         ClienteController clienteController = new ClienteController(CadastrarOrdemServicoActivity.this);
         // Array Adapter que é definido como adapter do spinner
@@ -62,12 +61,6 @@ public class CadastrarOrdemServicoActivity extends AppCompatActivity {
 
         escolher_cliente.setAdapter(adapter);
 
-        btnCancelarOrdServ.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
         btnCadastrarOrdServ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,7 +108,7 @@ public class CadastrarOrdemServicoActivity extends AppCompatActivity {
                     boolean criadoComSucesso = new OS_Controller(CadastrarOrdemServicoActivity.this).create(ordemServico);
 
                     if (criadoComSucesso) {
-                        Toast.makeText(CadastrarOrdemServicoActivity.this, "Cadastro Realizado com Sucesso", Toast.LENGTH_LONG).show();
+                        Toast.makeText(CadastrarOrdemServicoActivity.this, "Ordem de Serviço Criado com Sucesso", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(CadastrarOrdemServicoActivity.this, ListaOrdemServicoActivity.class));
                         finish();
                     } else

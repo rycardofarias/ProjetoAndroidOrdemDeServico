@@ -49,9 +49,7 @@ public class OS_Controller extends DataBaseAdapter {
             values.put("cliente_id", ordemServico.getCliente().getId());
 
             long os =db.insert("ordem_servico", null, values);
-            System.out.println(os);
             if(os==-1){
-                System.out.println("Deu pau");
                 verifica=false;
             } else {
                 db.setTransactionSuccessful();
@@ -79,9 +77,10 @@ public class OS_Controller extends DataBaseAdapter {
 
         return true;
     }
+
     public List<OrdemServico> listOS(){
         List<OrdemServico> ordemServicos= new ArrayList<>();
-        String sql = "SELECT * FROM ordem_servico ORDER by marca";
+        String sql = "SELECT * FROM ordem_servico ORDER by status";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.moveToFirst()){
@@ -94,7 +93,7 @@ public class OS_Controller extends DataBaseAdapter {
                 String data_entrada = cursor.getString(cursor.getColumnIndex("data_entrada"));
                 String valor_final = cursor.getString(cursor.getColumnIndex("valor_final"));
                 int cliente_id = cursor.getInt(cursor.getColumnIndex("cliente_id"));
-                System.out.println("Cliente id"+ cliente_id);
+                //System.out.println("Cliente id"+ cliente_id);
                 OrdemServico ordemServico = new OrdemServico();
                 ordemServico.setId(id);
                 ordemServico.setNumero_ordem_servico(numero_ordem_servico);
@@ -116,9 +115,11 @@ public class OS_Controller extends DataBaseAdapter {
                 Cursor cursor2 = db.rawQuery(sql2, null);
                 if(cursor2.moveToFirst()){
                     String nome = cursor2.getString(cursor2.getColumnIndex("nome"));
+                    String email = cursor2.getString(cursor2.getColumnIndex("email"));
 
                     cliente.setId(Integer.valueOf(cliente_id));
                     cliente.setNome(nome);
+                    cliente.setEmail(email);
                 }
                 ordemServico.setCliente(cliente);
                 ordemServicos.add(ordemServico);
@@ -142,7 +143,6 @@ public class OS_Controller extends DataBaseAdapter {
             String modelo= cursor.getString(cursor.getColumnIndex("modelo"));
             String marca= cursor.getString(cursor.getColumnIndex("marca"));
             String data_entrada= cursor.getString(cursor.getColumnIndex("data_entrada"));
-
             String imei= cursor.getString(cursor.getColumnIndex("imei"));
             String acessorios= cursor.getString(cursor.getColumnIndex("acessorios"));
             String detalhes= cursor.getString(cursor.getColumnIndex("detalhes"));
@@ -150,6 +150,7 @@ public class OS_Controller extends DataBaseAdapter {
             String valorPrevio= cursor.getString(cursor.getColumnIndex("valor_previo"));
             String tecnico= cursor.getString(cursor.getColumnIndex("tecnico_responsavel"));
             String cliente_os = cursor.getString(cursor.getColumnIndex("cliente_id"));
+            Integer id = cursor.getInt(cursor.getColumnIndex("id"));
 
             ordemServico = new OrdemServico();
             ordemServico.setNumero_ordem_servico(numero);
@@ -170,16 +171,19 @@ public class OS_Controller extends DataBaseAdapter {
             ordemServico.setValor_final(valorFinal);
             ordemServico.setTecnico_responsavel(tecnico);
 
-
             cliente = new Cliente();
             String sql2 = "SELECT * FROM cliente WHERE id = "+cliente_os;
             Cursor cursor2 = db.rawQuery(sql2, null);
             if(cursor2.moveToFirst()){
                 String nome = cursor2.getString(cursor2.getColumnIndex("nome"));
+                String email = cursor2.getString(cursor2.getColumnIndex("email"));
 
                 cliente.setId(Integer.valueOf(cliente_os));
                 cliente.setNome(nome);
+                cliente.setEmail(email);
             }
+            ordemServico.setCliente(cliente);
+            ordemServico.setId(id);
         }
         return ordemServico;
     }

@@ -8,40 +8,27 @@
     tools:layout_editor_absoluteY="81dp">
 
     <android.support.v7.widget.SearchView
-        android:id="@+id/mSearch"
+        android:id="@+id/mSearchClienteId"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-
-        app:defaultQueryHint="Buscar..."
+        app:defaultQueryHint="Pesquise: pelo Nome..."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnAdicionarClienteId"
-        android:layout_width="151dp"
-        android:layout_height="41dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@android:color/background_dark"
         android:text="@string/btn_adicionar"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/btnVoltarClienteId"
-        android:layout_width="151dp"
-        android:layout_height="41dp"
-        android:layout_margin="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@android:color/background_dark"
-        android:text="@string/btn_cancelar"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -66,7 +53,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mSearch"
+        app:layout_constraintTop_toBottomOf="@+id/mSearchClienteId"
         app:srcCompat="@drawable/pessoa" />
 
 </android.support.constraint.ConstraintLayout>

@@ -17,6 +17,8 @@ public class Cliente implements Serializable{
     private String Telefone;
     private String Email;
 
+    private Boolean ativo;
+
     private Endereco endereco;
 
     public Cliente(){
@@ -89,4 +91,11 @@ public class Cliente implements Serializable{
         this.endereco = endereco;
     }
 
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
 }

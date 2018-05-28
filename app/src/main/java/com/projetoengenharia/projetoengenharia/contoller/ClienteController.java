@@ -25,7 +25,6 @@ public class ClienteController extends DataBaseAdapter{
         //integração com o banco
     }
 
-
     public boolean create(Cliente cliente){
         boolean verifica=false;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -48,6 +47,7 @@ public class ClienteController extends DataBaseAdapter{
             values_cliente.put("telefone", cliente.getTelefone());
             values_cliente.put("email", cliente.getEmail());
             values_cliente.put("endereco_id", id_endereco);
+            values_cliente.put("ativo", cliente.getAtivo());
             long id_cliente = db.insert("cliente", null, values_cliente);
             if(id_cliente==-1){
                 verifica=false;
@@ -87,7 +87,7 @@ public class ClienteController extends DataBaseAdapter{
         values.put("data_nascimento", dateFormat.format(cliente.getDataNascimento()));
         values.put("telefone" , cliente.getTelefone());
         values.put("email" , cliente.getEmail());
-        //values.put("endereco_id" , cliente.getEndereco().getId());
+        values.put("ativo" , cliente.getAtivo());
 
         String where2 = "id = ? ";
         String[] whereArgs2 = {Integer.toString(cliente.getId())};
@@ -108,7 +108,7 @@ public class ClienteController extends DataBaseAdapter{
 
     public List<Cliente> listCliente(){
         List<Cliente> clientes= new ArrayList<>();
-        String sql = "SELECT * FROM cliente ORDER by nome";
+        String sql = "SELECT * FROM cliente WHERE ativo =1 ORDER by nome";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.moveToFirst()){
@@ -143,6 +143,7 @@ public class ClienteController extends DataBaseAdapter{
             String dataNascimento= cursor2.getString(cursor2.getColumnIndex("data_nascimento"));
             String telefone= cursor2.getString(cursor2.getColumnIndex("telefone"));
             String email= cursor2.getString(cursor2.getColumnIndex("email"));
+            String ativo= cursor2.getString(cursor2.getColumnIndex("ativo"));
             String endereco_cliente= cursor2.getString(cursor2.getColumnIndex("endereco_id"));
 
             cliente = new Cliente();
@@ -157,6 +158,7 @@ public class ClienteController extends DataBaseAdapter{
             }
             cliente.setTelefone(telefone);
             cliente.setEmail(email);
+            cliente.setAtivo(Boolean.valueOf(ativo));
 
 
             String sql2  = "SELECT * FROM endereco WHERE id = " + endereco_cliente;
@@ -182,16 +184,41 @@ public class ClienteController extends DataBaseAdapter{
         return cliente;
     }
 
-    public boolean deleteCliente(int clienteId){
-
+    public boolean deleteCliente(int clienteId) {
         boolean isDeletadoCliente = false;
         boolean isDeletadoEndereco = false;
-
-        SQLiteDatabase db=  this.getWritableDatabase();
-        isDeletadoCliente = db.delete("cliente", "id ='" +clienteId + "'", null) >0;
-        isDeletadoEndereco = db.delete("endereco", "id ='" +clienteId + "'", null) >0;
-
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "SELECT * FROM ordem_servico WHERE  cliente_id = " + clienteId;
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.moveToFirst()) {
+            String idClie = cursor.getString(cursor.getColumnIndex("cliente_id"));
+            int idCliente = (Integer.valueOf(idClie));
+            System.out.println("id cliente consula");
+            System.out.println(idCliente);
+            //if (clienteId == idCliente) {
+                Cliente cliente=new Cliente();
+                cliente.setId(clienteId);
+                cliente.setAtivo(false);
+                clienteInexistanete(cliente);
+            //}
+        }
+        else{
+            isDeletadoCliente = db.delete("cliente", "id ='" + clienteId + "'", null) > 0;
+            isDeletadoEndereco = db.delete("endereco", "id ='" + clienteId + "'", null) > 0;
+        }
         db.close();
+        return true;
+    }
+    public boolean clienteInexistanete (Cliente cliente){
+        ContentValues values = new ContentValues();
+
+        values.put("ativo", cliente.getAtivo());
+        String where = "id = ? ";
+        String[] whereArgs = {Integer.toString(cliente.getId())};
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean isClienteInativo = db.update("cliente", values, where, whereArgs)>0;
+
         return true;
     }
 

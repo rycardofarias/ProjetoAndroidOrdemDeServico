@@ -19,6 +19,8 @@ import com.projetoengenharia.projetoengenharia.model.Endereco;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CadastroClienteActivity extends AppCompatActivity {
 
@@ -38,6 +40,7 @@ public class CadastroClienteActivity extends AppCompatActivity {
     private Button btnAdicionar;
     private Button btnCancelar;
 
+    String validarEmail;
     Cliente editarCliente;
 
     AdapterCliente adapterCliente;
@@ -63,7 +66,6 @@ public class CadastroClienteActivity extends AppCompatActivity {
         rua = (EditText) findViewById(R.id.edtRuaId);
         numero = (EditText) findViewById(R.id.edtNumeroId);
         btnAdicionar = (Button) findViewById(R.id.btnAdicionarCliId);
-        btnCancelar = (Button) findViewById(R.id.btnCancelarClienteId);
 
         if(editarCliente != null){
             final ClienteController clienteController = new ClienteController(this);
@@ -86,12 +88,6 @@ public class CadastroClienteActivity extends AppCompatActivity {
             System.out.println("Cliente Id " +cliente.getId());
             Toast.makeText(CadastroClienteActivity.this, "legal", Toast.LENGTH_LONG).show();
         }
-        btnCancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,6 +125,8 @@ public class CadastroClienteActivity extends AppCompatActivity {
                 cliente.setCPF(clienteCpf);
                 cliente.setTelefone(clienteTelefone);
                 cliente.setEmail(clienteEmail);
+                cliente.setAtivo(true);
+                validarEmail =clienteEmail;
                 validarCampos();
 
                 if (validacao == true) {
@@ -157,14 +155,11 @@ public class CadastroClienteActivity extends AppCompatActivity {
                         }
                         novoCliente.setTelefone(telefone.getText().toString());
                         novoCliente.setEmail(email.getText().toString());
+                        novoCliente.setAtivo(true);
                         novoCliente.setEndereco(novoEndereco);
                         //gambiarra
                         novoCliente.getEndereco().setId(editarCliente.getId());
                         novoCliente.setId(editarCliente.getId());
-
-                        System.out.println("2 editarCliente Id  "+ editarCliente.getId());
-                        System.out.println(" 2 Cliente Id " +cliente.getId());
-                        System.out.println(" 2 NovoCliente Id "+ novoCliente.getId());
 
                         boolean alterandoCliente = new ClienteController(CadastroClienteActivity.this).updateCliente(novoCliente);
                         if(alterandoCliente){
@@ -198,6 +193,19 @@ public class CadastroClienteActivity extends AppCompatActivity {
         final Cliente cliente = clienteController.buscarPeloId((Integer) adapterCliente.getItem(idCliente));
         Toast.makeText(CadastroClienteActivity.this, "legal fera", Toast.LENGTH_LONG).show();
     }
+    public static boolean isEmailValid(String email) {
+        boolean isValid = false;
+
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        CharSequence inputStr = email;
+
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+        if (matcher.matches()) {
+            isValid = true;
+        }
+        return isValid;
+    }
 
     private void validarCampos() {
         validacao = false;
@@ -224,6 +232,10 @@ public class CadastroClienteActivity extends AppCompatActivity {
         }else if ((email.getText().toString().trim().equals("") || email.getText().toString() == null)) {
             validacao = false;
             email.setError("Campo obrigatorio");
+            email.requestFocus();
+        }else if (isEmailValid(validarEmail)==false){
+            validacao=false;
+            email.setError("email invalido");
             email.requestFocus();
         }else if (estado.getText().toString().trim().equals("") || estado.getText().toString() == null) {
             validacao = false;

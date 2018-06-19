@@ -11,7 +11,7 @@ import android.widget.Filterable;
 
 import com.projetoengenharia.projetoengenharia.filtro.FiltroCustomizadoOS;
 import com.projetoengenharia.projetoengenharia.R;
-import com.projetoengenharia.projetoengenharia.activity.Editar_Ordem_Servico_Activity;
+import com.projetoengenharia.projetoengenharia.activity.ordemDeServicoActivity.Editar_Ordem_Servico_Activity;
 import com.projetoengenharia.projetoengenharia.model.OrdemServico;
 import com.projetoengenharia.projetoengenharia.ItemClickListener;
 import com.projetoengenharia.projetoengenharia.viewHolder.OrdemServicoViewHolder;

@@ -90,6 +90,8 @@ public class OS_Controller extends DataBaseAdapter {
                 String status = cursor.getString(cursor.getColumnIndex("status"));
                 String modelo = cursor.getString(cursor.getColumnIndex("modelo"));
                 String marca = cursor.getString(cursor.getColumnIndex("marca"));
+                String tecnico = cursor.getString(cursor.getColumnIndex("tecnico_responsavel"));
+                String defeito = cursor.getString(cursor.getColumnIndex("defeito_reclamacao"));
                 String data_entrada = cursor.getString(cursor.getColumnIndex("data_entrada"));
                 String valor_final = cursor.getString(cursor.getColumnIndex("valor_final"));
                 int cliente_id = cursor.getInt(cursor.getColumnIndex("cliente_id"));
@@ -101,6 +103,8 @@ public class OS_Controller extends DataBaseAdapter {
                 ordemServico.setModelo(modelo);
                 ordemServico.setValor_final(valor_final);
                 ordemServico.setMarca(marca);
+                ordemServico.setTecnico_responsavel(tecnico);
+                ordemServico.setDefeito_reclamacao(defeito);
 
                 SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
                 try {
@@ -186,5 +190,68 @@ public class OS_Controller extends DataBaseAdapter {
             ordemServico.setId(id);
         }
         return ordemServico;
+    }
+    public ArrayList<OrdemServico> buscarTodasOrdemServicos(){
+
+        ArrayList<OrdemServico> ordemServicos = new ArrayList<>();
+
+        OrdemServico ordemServico = null;
+        Cliente cliente = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT * FROM ordem_servico";
+        Cursor cursor = db.rawQuery(sql,null);
+        while(cursor.moveToNext()){
+
+            String numero = cursor.getString(cursor.getColumnIndex("numero_ordem_servico"));
+            String status= cursor.getString(cursor.getColumnIndex("status"));
+            String valorFinal= cursor.getString(cursor.getColumnIndex("valor_final"));
+            String modelo= cursor.getString(cursor.getColumnIndex("modelo"));
+            String marca= cursor.getString(cursor.getColumnIndex("marca"));
+            String data_entrada= cursor.getString(cursor.getColumnIndex("data_entrada"));
+            String imei= cursor.getString(cursor.getColumnIndex("imei"));
+            String acessorios= cursor.getString(cursor.getColumnIndex("acessorios"));
+            String detalhes= cursor.getString(cursor.getColumnIndex("detalhes"));
+            String defeito= cursor.getString(cursor.getColumnIndex("defeito_reclamacao"));
+            String valorPrevio= cursor.getString(cursor.getColumnIndex("valor_previo"));
+            String tecnico= cursor.getString(cursor.getColumnIndex("tecnico_responsavel"));
+            String cliente_os = cursor.getString(cursor.getColumnIndex("cliente_id"));
+            Integer id = cursor.getInt(cursor.getColumnIndex("id"));
+
+            ordemServico = new OrdemServico();
+            ordemServico.setNumero_ordem_servico(numero);
+            ordemServico.setStatus_celular(status);
+            ordemServico.setModelo(modelo);
+            ordemServico.setMarca(marca);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            try {
+                ordemServico.setData_entrada(dateFormat.parse(data_entrada));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            ordemServico.setIMEI(imei);
+            ordemServico.setAcessorios(acessorios);
+            ordemServico.setDetalhes(detalhes);
+            ordemServico.setDefeito_reclamacao(defeito);
+            ordemServico.setValor_previo(valorPrevio);
+            ordemServico.setValor_final(valorFinal);
+            ordemServico.setTecnico_responsavel(tecnico);
+
+            cliente = new Cliente();
+            String sql2 = "SELECT * FROM cliente WHERE id = "+cliente_os;
+            Cursor cursor2 = db.rawQuery(sql2, null);
+            if(cursor2.moveToFirst()){
+                String nome = cursor2.getString(cursor2.getColumnIndex("nome"));
+                String email = cursor2.getString(cursor2.getColumnIndex("email"));
+
+                cliente.setId(Integer.valueOf(cliente_os));
+                cliente.setNome(nome);
+                cliente.setEmail(email);
+            }
+            ordemServico.setCliente(cliente);
+            ordemServico.setId(id);
+
+            ordemServicos.add(ordemServico);
+        }
+        return ordemServicos;
     }
 }

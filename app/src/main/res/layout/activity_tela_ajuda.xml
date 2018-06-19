@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TelaAjudaActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Manual"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Sessão 1: Menu Principal"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="321dp"
+                android:layout_height="376dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/menu_principal"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Na sessão principal há duas opções que são Cliente e Ordem de Serviço. "
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Sessão 2: Cliente"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="321dp"
+                android:layout_height="455dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/tela_clietes"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Nessa tela há opções de exibir Cliente, como editar, apagar e filtrar isso se já houver algum Cliente cadastrado. Senão há também a opção de cadastrar um Cliente clicando no botão adicionar. Para fazer o fitro basta digitar o nome do Cliente."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Sessão 2.1: Editar Cliente"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="321dp"
+                android:layout_height="455dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/tela_editar_cliente"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView46"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Clicando no item da caneta mostrado na sessão 2 irá abrir a opção de Editar o Cliente selecionado. Nessa tela a uma barra de rolagem e no final há um botão para confirmar a alteração."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView47"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Sessão 2.2: Deletar Cliente"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="321dp"
+                android:layout_height="455dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/tela_apagar_cliente"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView48"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Clicando no item da lixeira mostrado na sessão 2, irá abrir a opção de Deletar o Cliente selecionado. Basta apenas confirmar. Se o cliente não tiver nenhuma ordem de serviço cadastrado em seu nome será deletado totalmente. Se tiver alguma ordem de serviço o Cliente será colocado como inativo e não será exibido na lista."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Sessão 2.3: Adicionar Cliente"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="321dp"
+                android:layout_height="455dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/tela_cadastrar_clientes"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Clicando no botão Adiconar mostrado na sessão 2 irá abrir a opção de Cadastrar Cliente. Nessa tela a uma barra de rolagem e no final há um botão para confirmar o cadastro."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Sessão 3: Ordem de Serviço"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="321dp"
+                android:layout_height="455dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/lista_os"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView54"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Nessa tela há opções de exibir Ordens de Serviço, como clicar e filtrar isso se já houver alguma Ordem de Serviço. Senão há também a opção de adicionar uma Ordem de Serviço clicando no botão adicionar. Para fazer o fitro basta digitar o nome do Cliente ou o numero da Ordem de Serviço."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView55"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Sessão 3.1:  Adicionar Ordem Serviço"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="321dp"
+                android:layout_height="455dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/cadastrar_os"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView56"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Clicando no botão Adiconar mostrado na sessão 3, irá abrir a opção de Adicionar Ordem de Serviço. Nessa tela a uma barra de rolagem e no final há um botão para confirmar o cadastro."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView59"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Sessão 3.2: Finalizando a Ordem de Serviço aberta"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView16"
+                android:layout_width="321dp"
+                android:layout_height="455dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/tela_editar_os_concluir"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView60"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Quando clicado em uma Ordem de Serviço da lista mostrado na sessão 3, irá abri essa tela, se ela estivar como aberta podesse mudar e esolher Conclúida e em seguida aparecerar a opção de digitar o valor final e depois só clicar no botão confirmar."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView61"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Sessão 3.3: Recibo Ordem de Recibo"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView17"
+                android:layout_width="321dp"
+                android:layout_height="455dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/recibo"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView62"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Quando a Ordem de Serviço estiver concluida podesse apertar no botão superior do lado direito na Toobar(Barrinha verde) mostrado na figura 3.2 que irá gerar um recibo para o cliente."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView69"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Sessão 3.4: Email para o Cliente"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView21"
+                android:layout_width="272dp"
+                android:layout_height="115dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/email_chegado"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView70"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Quando a Ordem de Serviço for concluida será enviado um e-mail automaticamente para o cliente alertando que o aparelho foi concertado."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView63"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Sessão 4: Menu Lateral"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="321dp"
+                android:layout_height="455dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/menu_lateral"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView64"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Na sessão 4  há três opções que são Relatório, Manual e Sair. O Relatorio será mostrado na sessão 4.1, o Manual é essa opção que você está nomomento que mostra as funcionalidades do aplicativo e a opção Sair fecha o aplicativo."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView65"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Sessão 4.1: Gerar Relatório"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView19"
+                android:layout_width="321dp"
+                android:layout_height="455dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/gerar_relatorio"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView66"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Na sessão há um botão que quando clicado irá Gerar um relatório das Ordens de Serviço e Exibir."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView67"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Sessão 4.1.1: Relatório"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView20"
+                android:layout_width="369dp"
+                android:layout_height="354dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/relatorio"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/textView68"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Nessa sessão mostra o relatório que contém informações das ordens de serviços e a data e hora em que foi gerado."
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

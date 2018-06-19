@@ -14,7 +14,6 @@ public class DataBaseAdapter extends SQLiteOpenHelper {
      * classe que vai fazer todas as interações com o banco de dados
      */
     //dados do banco:
-            //o cara botou protected
     private static final String NOME_BANCO = "dbMD.db";
     private static final int VERSION = 1;
     private static final String Tabela = "cliente";

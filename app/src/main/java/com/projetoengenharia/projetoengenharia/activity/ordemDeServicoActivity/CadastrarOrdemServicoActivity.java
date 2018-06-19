@@ -1,4 +1,4 @@
-package com.projetoengenharia.projetoengenharia.activity;
+package com.projetoengenharia.projetoengenharia.activity.ordemDeServicoActivity;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -16,6 +16,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests.all {
+            // All the usual Gradle options.
+            jvmArgs '-XX:MaxPermSize=256m'
+        }
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -32,4 +39,6 @@ dependencies {
     implementation files('libs/activation.jar')
     implementation files('libs/additionnal.jar')
     implementation files('libs/mail.jar')
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.1'
+    testImplementation "org.mockito:mockito-core:1.9.5"
 }

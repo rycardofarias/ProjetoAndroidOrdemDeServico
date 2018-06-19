@@ -1,4 +1,4 @@
-package com.projetoengenharia.projetoengenharia.activity;
+package com.projetoengenharia.projetoengenharia.activity.ordemDeServicoActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -70,13 +70,6 @@ public class ListaOrdemServicoActivity extends AppCompatActivity {
     private ArrayList<OrdemServico> getOS() {
         ArrayList <OrdemServico> os = (ArrayList<OrdemServico>) new OS_Controller(this).listOS();
         return os;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_ordem_servico, menu);
-        return true;
     }
 
 }

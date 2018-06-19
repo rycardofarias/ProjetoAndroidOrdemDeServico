@@ -1,18 +1,10 @@
 package com.projetoengenharia.projetoengenharia.viewHolder;
 
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.projetoengenharia.projetoengenharia.ItemClickListener;
 import com.projetoengenharia.projetoengenharia.R;
-import com.projetoengenharia.projetoengenharia.activity.CadastroClienteActivity;
-import com.projetoengenharia.projetoengenharia.model.Cliente;
-
-import java.util.ArrayList;
 
 /**
  * Created by Ricardo Farias on 23/04/2018.

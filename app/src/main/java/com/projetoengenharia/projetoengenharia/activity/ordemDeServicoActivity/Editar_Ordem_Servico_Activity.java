@@ -1,4 +1,4 @@
-package com.projetoengenharia.projetoengenharia.activity;
+package com.projetoengenharia.projetoengenharia.activity.ordemDeServicoActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,19 +18,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.projetoengenharia.projetoengenharia.R;
-import com.projetoengenharia.projetoengenharia.adapter.AdapterOS;
+import com.projetoengenharia.projetoengenharia.activity.MainActivity;
 import com.projetoengenharia.projetoengenharia.contoller.OS_Controller;
 import com.projetoengenharia.projetoengenharia.email.Mail;
-import com.projetoengenharia.projetoengenharia.model.Cliente;
 import com.projetoengenharia.projetoengenharia.model.OrdemServico;
+import com.projetoengenharia.projetoengenharia.pdf.ReciboPDF;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Editar_Ordem_Servico_Activity extends AppCompatActivity {
 
     private boolean validacao;
+    private boolean verifcaSeEstaConcluida;
 
     private EditText valor_final;
     private Spinner status;
@@ -47,6 +51,8 @@ public class Editar_Ordem_Servico_Activity extends AppCompatActivity {
     private Button btnAlterarOrdServ;
     private Button btnvoltarOrdServ;
 
+    private ReciboPDF reciboPDF;
+    private ReciboPDF reciboPDF2;
     private List<String> opcoes = new ArrayList<String>();
     private String nomeOp;
     OrdemServico editarOS;
@@ -57,7 +63,6 @@ public class Editar_Ordem_Servico_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar__ordem__servico_);
-
         Intent y = getIntent();
         editarOS = (OrdemServico) y.getSerializableExtra("os-enviado");
 
@@ -83,11 +88,8 @@ public class Editar_Ordem_Servico_Activity extends AppCompatActivity {
 
             nomeCliente = ordemServico.getCliente().getNome();
             emailCliente = ordemServico.getCliente().getEmail();
-            //System.out.println("email "+email);
-            //System.out.println("nome "+nomeEmail);
 
             String testeStatus = (ordemServico.getStatus_celular());
-            System.out.println("status " + testeStatus);
 
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opcoes);
             ArrayAdapter<String> spinnerArrayAdapter = arrayAdapter;
@@ -139,6 +141,7 @@ public class Editar_Ordem_Servico_Activity extends AppCompatActivity {
             tecnico.setText(ordemServico.getTecnico_responsavel());
 
             ordemServico.setId(editarOS.getId());
+            creatRecibiPDF();
         }
         btnAlterarOrdServ.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -230,6 +233,58 @@ public class Editar_Ordem_Servico_Activity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Erro ao verificar se estava online! ", Toast.LENGTH_SHORT).show();
             return false;
         }
+    }
+
+    public void creatRecibiPDF(){
+        reciboPDF = new ReciboPDF(getApplicationContext());
+        reciboPDF.abriDocumentoRecibo();
+        reciboPDF.adicionarMetaDataRecibo("MD Informática", "Teste", "Ricardo");
+        Date date = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String dataConvertida = formato.format(date);
+        String cliente = String.valueOf(editarOS.getCliente());
+        String marca = String.valueOf(editarOS.getMarca());
+        String modelo = String.valueOf(editarOS.getModelo());
+        String defeito = String.valueOf(editarOS.getDefeito_reclamacao());
+        String tecnico = String.valueOf(editarOS.getTecnico_responsavel());
+        String totalPagar = String.valueOf(editarOS.getValor_final());
+        String numero = String.valueOf(editarOS.getNumero_ordem_servico());
+        reciboPDF.adicionarTitulosRecibo("============================================",
+                "MD Informática","Recibo / "+ dataConvertida, "Cliente: "+cliente, marca,
+                modelo,"Descrição", defeito,"Total a pagar R$ "+totalPagar,
+                "Tecnico "+tecnico,"...................................................................................................");
+        //reciboPDF.addParagrafoRecibo(longoTexto);
+        //relatorioPDF.criarTabela(header, getTodasOS());
+        reciboPDF.fecharReciboDocumento();
+    }
+    public void pdfViewRecibo() {
+        reciboPDF.viewReciboPDF();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_editar_ordem_servico, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        //double var = Double.parseDouble(editarOS.getValor_final());
+
+        if (editarOS.getValor_final().length()>1) {
+            //noinspection SimplifiableIfStatement
+            if (id == R.id.gerar_reciboId) {
+                Toast.makeText(this, "Gerando Recibo ", Toast.LENGTH_LONG).show();
+                pdfViewRecibo();
+                return true;
+            }
+        }else
+            Toast.makeText(this, "Não foi possivel Gerar o Recibo, a Ordem de Serviço ainda não foi concluída",Toast.LENGTH_LONG).show();
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -2,9 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.projetoengenharia.projetoengenharia">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,17 +27,26 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.ListaClientesActivity"
+            android:name=".activity.clienteActivity.ListaClientesActivity"
             android:parentActivityName=".activity.MainActivity" />
         <activity
-            android:name=".activity.ListaOrdemServicoActivity"
+            android:name=".activity.ordemDeServicoActivity.ListaOrdemServicoActivity"
             android:parentActivityName=".activity.MainActivity" />
-        <activity android:name=".activity.Editar_Ordem_Servico_Activity"
-            android:parentActivityName=".activity.ListaOrdemServicoActivity"/>
-        <activity android:name=".activity.CadastroClienteActivity"
-            android:parentActivityName=".activity.ListaClientesActivity"/>
-        <activity android:name=".activity.CadastrarOrdemServicoActivity"
-            android:parentActivityName=".activity.ListaOrdemServicoActivity"></activity>
+        <activity
+            android:name=".activity.ordemDeServicoActivity.Editar_Ordem_Servico_Activity"
+            android:parentActivityName=".activity.ordemDeServicoActivity.ListaOrdemServicoActivity" />
+        <activity
+            android:name=".activity.clienteActivity.CadastroClienteActivity"
+            android:parentActivityName=".activity.clienteActivity.ListaClientesActivity" />
+        <activity
+            android:name=".activity.ordemDeServicoActivity.CadastrarOrdemServicoActivity"
+            android:parentActivityName=".activity.ordemDeServicoActivity.ListaOrdemServicoActivity" />
+        <activity
+            android:name=".activity.pdfActivity.ViewPdfActivity"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity android:name=".activity.pdfActivity.RelatorioPdfActivity" />
+        <activity android:name=".activity.pdfActivity.ViewReciboActivity" />
+        <activity android:name=".activity.TelaAjudaActivity"></activity>
     </application>
 
 </manifest>

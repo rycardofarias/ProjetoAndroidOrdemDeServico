@@ -1,4 +1,4 @@
-package com.projetoengenharia.projetoengenharia.activity;
+package com.projetoengenharia.projetoengenharia.activity.clienteActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -188,11 +188,7 @@ public class CadastroClienteActivity extends AppCompatActivity {
         });
 
     }
-    public void editarContatoPeloId(int idCliente){
-        final ClienteController clienteController = new ClienteController(this);
-        final Cliente cliente = clienteController.buscarPeloId((Integer) adapterCliente.getItem(idCliente));
-        Toast.makeText(CadastroClienteActivity.this, "legal fera", Toast.LENGTH_LONG).show();
-    }
+
     public static boolean isEmailValid(String email) {
         boolean isValid = false;
 

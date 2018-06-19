@@ -24,6 +24,9 @@ public class ClienteController extends DataBaseAdapter{
         super(context);
         //integração com o banco
     }
+    public ClienteController(){
+        this(null);
+    }
 
     public boolean create(Cliente cliente){
         boolean verifica=false;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.Editar_Ordem_Servico_Activity"
+    tools:context=".activity.ordemDeServicoActivity.Editar_Ordem_Servico_Activity"
     tools:layout_editor_absoluteY="81dp">
 
     <Button

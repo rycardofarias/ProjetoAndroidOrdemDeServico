@@ -1,4 +1,4 @@
-package com.projetoengenharia.projetoengenharia.activity;
+package com.projetoengenharia.projetoengenharia.activity.clienteActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -64,7 +63,6 @@ public class ListaClientesActivity extends AppCompatActivity {
     //
     private ArrayList<Cliente> getCliente() {
         ArrayList <Cliente> clientes2 = (ArrayList<Cliente>) new ClienteController(this).listCliente();
-        System.out.println(clientes2);
         return clientes2;
     }
 

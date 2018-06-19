@@ -14,8 +14,8 @@ import android.widget.ImageView;
 
 import com.projetoengenharia.projetoengenharia.filtro.FiltroCustomizadoCliente;
 import com.projetoengenharia.projetoengenharia.R;
-import com.projetoengenharia.projetoengenharia.activity.CadastroClienteActivity;
-import com.projetoengenharia.projetoengenharia.activity.ListaClientesActivity;
+import com.projetoengenharia.projetoengenharia.activity.clienteActivity.CadastroClienteActivity;
+import com.projetoengenharia.projetoengenharia.activity.clienteActivity.ListaClientesActivity;
 import com.projetoengenharia.projetoengenharia.contoller.ClienteController;
 import com.projetoengenharia.projetoengenharia.model.Cliente;
 import com.projetoengenharia.projetoengenharia.viewHolder.ClienteViewHolder;
